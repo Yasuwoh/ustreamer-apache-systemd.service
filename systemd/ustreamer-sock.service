@@ -1,0 +1,13 @@
+[Unit]
+Description=ustreamer-sock
+Wants=network-online.target local-fs.target ustreamer-pre.service
+After=network-online.target local-fs.target ustreamer-pre.service
+
+[Service]
+User=ustreamer
+Group=ustreamer
+ExecStart=ustreamer -d /dev/video0 -r 1280x720 --encoder HW --unix /run/ustreamer/ustreamer.sock --unix-rm --unix-mode 777
+
+[Install]
+WantedBy=multi-user.target
+

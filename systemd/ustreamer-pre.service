@@ -1,0 +1,11 @@
+[Unit]
+Description=ustreamer-pre
+Wants=network-online.target local-fs.target
+After=network-online.target local-fs.target
+
+[Service]
+User=root
+Group=root
+Type=oneshot
+ExecStart=install -d -m 755 -o ustreamer -g video /run/ustreamer
+
